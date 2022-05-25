@@ -1,0 +1,21 @@
+﻿
+@model ViewInfoModel
+
+@{
+	Layout= "_Layout";
+}
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+@foreach(var x in Model.Products)
+{
+	Html.RenderPartial("ProductSummary", x);
+}
+
+<div  
+     page-model="@Model._PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"  page-url-category="@Model.CurrentCategory"
+     page-class-selected="btn-primary" class="btn-group m-2">
+</div>
+
+

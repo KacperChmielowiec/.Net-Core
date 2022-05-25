@@ -1,0 +1,55 @@
+﻿@model Product
+<head>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+</head>
+<div class="card card-header m-4">
+    <div id="rowmain">
+        <div style="display: flex; flex: 1 0 0 ; " class="mr-3">
+            <div class="imgdiv" style="margin-left: auto; margin-right: auto;">
+                <img src="@(Url.Action("Images","Home", new {id=Model.Id}))" width="250" height="250"
+                     class="img-thumbnail img-fluid bg-light" style="min-width: 300px; min-height: 300px; max-width: 300px; max-height: 300px;" />
+            </div>
+        </div>
+
+        <div style="display: flex;  flex-direction: column;  flex: 3 0 0; min-width: 50%;">
+
+            <div class="centerdiv" style="  display: flex; flex: 1 0 0; flex-direction: column;">
+                <h3>@Model.Name</h3>
+                <h5>@Model.Description</h5>
+
+            </div>
+            <div style="display: flex; justify-content: flex-end;">
+
+
+
+
+
+
+                <h3>
+                    <span class="badge badge-pill badge-primary mr-2">
+                        @Model.Price.ToString("c")
+                    </span>
+                </h3>
+                <form id="@Model.Id" asp-page="/Cart" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+
+                    <h3>
+                        <button class="btn btn-success" type="submit">
+                            Add to card
+                        </button>
+                    </h3>
+                </form>
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

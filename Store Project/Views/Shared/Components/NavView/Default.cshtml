@@ -1,0 +1,17 @@
+﻿@model IEnumerable<string>
+<head>
+    <link rel="stylesheet" href="~/style.css">
+</head>
+<a class="btn btn-block btn-outline-success d-block text-wrap mt-4" asp-action="Index" asp-controller="Home"
+          asp-route-category="" asp-route-productPage = "1">Home</a>
+
+@foreach (string category in Model)
+{
+   <a class="btn btn-block @(category==ViewBag.c ? "btn-primary":"btn-outline-secondary") d-block text-wrap"
+   asp-action="Index" asp-controller="Home"
+   asp-route-category="@category"
+   asp-route-productPage="1">
+        @category
+    </a>
+   
+}
